@@ -1,0 +1,143 @@
+<p align="center">
+  <a href="README.md">English</a> | <a href="README_zh.md">中文</a>
+</p>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Platform-Xilinx%20%7C%20AMD-E4002B?style=for-the-badge&logo=xilinx&logoColor=white" alt="Xilinx"/>
+  <img src="https://img.shields.io/badge/Powered%20by-Claude%20Code-7C3AED?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code"/>
+  <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License"/>
+</p>
+
+# Xilinx 全工具链 Skill -- Claude Code 插件
+
+> **让 AI 处理繁琐的 Tcl 脚本，你只需专注架构设计。**
+
+一个 Claude Code Skill，用自然语言描述你的设计需求，即可生成可直接运行的 Vivado / Vitis HLS / Vitis Unified / PetaLinux 脚本。覆盖从 HLS 算法到启动镜像的完整 FPGA/MPSoC 设计流程。
+
+---
+
+## 为什么需要这个 Skill？
+
+| 痛点 | 本 Skill 如何解决 |
+|------|------------------|
+| Vivado Tcl API 跨版本变化大 | 参考文档锁定版本特定 API，自动选择正确的命令 |
+| PS 配置参数多达 200+ 项 | 引导式问答 + 经过验证的 DDR/MIO/时钟 Tcl 模板 |
+| XDC 约束语法容易出错 | 从自然语言描述直接生成正确的 `set_property` / `create_clock` |
+| 跨工具交接流程复杂 | 自动化 HLS IP -> Vivado -> XSA -> Vitis/PetaLinux 数据流 |
+| JESD204B -> 204C 迁移风险高 | 提供端口映射、寄存器差异的分步迁移指南 |
+
+---
+
+## 支持的工具与器件
+
+```
+Vitis HLS ──> Vivado ──> Vitis Unified / PetaLinux
+ C/C++ IP      硬件设计    裸机 / RTOS / Linux
+```
+
+**工具：** Vivado、Vitis HLS、Vitis Unified IDE (2022.x+)、PetaLinux
+
+**器件：** Zynq UltraScale+ MPSoC (ZU15EG、ZU19EG、ZCU104 ...)、Virtex UltraScale+ (VU9P)、Kintex UltraScale、7 系列、Versal
+
+---
+
+## 快速开始
+
+### 1. 安装 Skill
+
+将本仓库克隆到你的 Claude Code Skills 目录：
+
+```bash
+git clone https://github.com/QingquanYao/xilinx-skill.git
+```
+
+然后在 Claude Code 配置中添加该 Skill 路径。
+
+### 2. 开始设计
+
+用自然语言描述你的任务即可，例如：
+
+```
+> 为 ZCU104 创建 Vivado 工程，包含 Zynq PS、2 个 AXI GPIO 和 1 个 BRAM 控制器
+
+> 为 VU9P 生成 200MHz 系统时钟的 XDC 约束，IO 标准为 LVDS
+
+> 用我的 XSA 文件构建 PetaLinux 镜像，需要自定义设备树覆盖
+
+> 将 ZU19EG 上的 JESD204B DAC 接口迁移到 JESD204C
+
+> 创建一个矩阵乘法的 Vitis HLS IP，使用 AXI4-Stream 接口
+```
+
+Skill 会自动：
+1. 询问必要信息（目标器件、版本、接口等）
+2. 加载相关参考文档
+3. 生成完整可运行的脚本
+4. 告诉你如何执行以及下一步做什么
+
+---
+
+## 参考文档库
+
+| 文件 | 内容覆盖 |
+|------|---------|
+| `vivado_guide.md` | 工程创建、Block Design、综合、实现、报告分析 |
+| `mpsoc_ps_config.md` | Zynq UltraScale+ PS 配置 -- DDR4、MIO、时钟、中断 |
+| `mpsoc_bd_guide.md` | Block Design 自动化模式与最佳实践 |
+| `xdc_constraints.md` | 时序约束、IO 标准、引脚分配 |
+| `xdc_guide.md` | XDC 语法快速参考 |
+| `hls_guide.md` | Vitis HLS C/C++ 到 IP 流程、pragma、优化 |
+| `vitis_unified_guide.md` | Vitis 2022.x+ 平台、域、应用创建 |
+| `petalinux_guide.md` | BSP 配置、内核、rootfs、启动镜像生成 |
+| `jesd204b_to_c_migration.md` | JESD204B 到 204C IP 迁移 -- 端口、寄存器、常见陷阱 |
+| `vu9p_guide.md` | VU9P 器件专用设计指南 |
+| `tcl_commands.md` | 常用 Vivado Tcl 命令参考 |
+
+---
+
+## 生成的工程结构
+
+Skill 会按阶段组织输出，结构清晰：
+
+```
+project_root/
+├── 01_hls/                  # Vitis HLS（可选）
+│   ├── hls_create.tcl
+│   └── src/
+├── 02_vivado/               # 硬件设计
+│   ├── create_project.tcl
+│   ├── create_bd.tcl
+│   ├── constraints/*.xdc
+│   ├── build.tcl
+│   └── output/              # .bit + .xsa
+├── 03_vitis/                # 嵌入式软件
+│   ├── create_platform.tcl
+│   └── src/
+└── 04_petalinux/            # Linux（可选）
+    ├── build.sh
+    └── config/
+```
+
+---
+
+## 最佳搭档
+
+本 Skill 可与 [Vivado MCP Server](https://github.com/QingquanYao/vivado-mcp) 配合使用，后者提供 Vivado 实时会话控制 -- 直接在 Claude Code 中运行综合、查看时序报告、烧写器件。
+
+---
+
+## 贡献
+
+欢迎提 Issue 和 PR。如果你有其他 Xilinx IP 核或器件系列的参考文档，欢迎贡献。
+
+---
+
+## 许可证
+
+MIT
+
+---
+
+<p align="center">
+  <sub>由 <a href="https://github.com/QingquanYao">@QingquanYao</a> 使用 Claude Code 构建</sub>
+</p>
