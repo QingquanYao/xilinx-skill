@@ -8,11 +8,11 @@
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License"/>
 </p>
 
-# Xilinx 全工具链 Skill -- Claude Code 插件
+# Xilinx 全工具链 Skill -- AI 编程助手插件
 
 > **让 AI 处理繁琐的 Tcl 脚本，你只需专注架构设计。**
 
-一个 Claude Code Skill，用自然语言描述你的设计需求，即可生成可直接运行的 Vivado / Vitis HLS / Vitis Unified / PetaLinux 脚本。覆盖从 HLS 算法到启动镜像的完整 FPGA/MPSoC 设计流程。
+一个 AI 编程助手 Skill（支持 Claude Code / Codex / OpenClaw），用自然语言描述你的设计需求，即可生成可直接运行的 Vivado / Vitis HLS / Vitis Unified / PetaLinux 脚本。覆盖从 HLS 算法到启动镜像的完整 FPGA/MPSoC 设计流程。
 
 ---
 
@@ -43,68 +43,64 @@ Vitis HLS ──> Vivado ──> Vitis Unified / PetaLinux
 
 ## 安装
 
-### 一键安装（自动检测）
+### Claude Code（推荐）
 
-安装脚本会自动检测你安装了哪些工具并配置。
+本仓库是一个 Claude Code 插件市场，一行命令即可安装：
 
-**macOS / Linux：**
-```bash
-git clone https://github.com/QingquanYao/xilinx-skill.git
-cd xilinx-skill && bash install.sh
+```
+/plugin marketplace add QingquanYao/xilinx-skill
 ```
 
-**Windows (PowerShell)：**
-```powershell
-git clone https://github.com/QingquanYao/xilinx-skill.git
-cd xilinx-skill; .\install.ps1
+然后安装插件：
+
+```
+/plugin install xilinx-suite
 ```
 
-### 手动安装
+搞定，Skill 即刻可用。
 
-<details>
-<summary><b>Claude Code</b></summary>
+### OpenAI Codex CLI
 
 ```bash
 git clone https://github.com/QingquanYao/xilinx-skill.git
-mkdir -p ~/.claude/skills/xilinx-suite
-cp xilinx-skill/SKILL.md ~/.claude/skills/xilinx-suite/
-cp -r xilinx-skill/references ~/.claude/skills/xilinx-suite/
+cd xilinx-skill && bash install.sh        # macOS/Linux
+cd xilinx-skill; .\install.ps1            # Windows PowerShell
 ```
-</details>
 
-<details>
-<summary><b>OpenAI Codex CLI</b></summary>
+或手动安装：
 
 ```bash
-git clone https://github.com/QingquanYao/xilinx-skill.git
 mkdir -p ~/.agents/skills/xilinx-suite
-cp xilinx-skill/SKILL.md ~/.agents/skills/xilinx-suite/
-cp -r xilinx-skill/references ~/.agents/skills/xilinx-suite/
-# 可选：全局指令
-cp xilinx-skill/AGENTS.md ~/.codex/AGENTS.md
+cp plugins/xilinx-suite/skills/xilinx-suite/SKILL.md ~/.agents/skills/xilinx-suite/
+cp -r plugins/xilinx-suite/references ~/.agents/skills/xilinx-suite/
+cp AGENTS.md ~/.codex/AGENTS.md
 ```
-</details>
 
-<details>
-<summary><b>OpenClaw</b></summary>
+### OpenClaw
 
 ```bash
 git clone https://github.com/QingquanYao/xilinx-skill.git
-mkdir -p ~/.openclaw/skills/xilinx-suite
-cp xilinx-skill/SKILL.md ~/.openclaw/skills/xilinx-suite/
-cp -r xilinx-skill/references ~/.openclaw/skills/xilinx-suite/
+cd xilinx-skill && bash install.sh        # macOS/Linux
+cd xilinx-skill; .\install.ps1            # Windows PowerShell
 ```
-</details>
+
+或手动安装：
+
+```bash
+mkdir -p ~/.openclaw/skills/xilinx-suite
+cp plugins/xilinx-suite/skills/xilinx-suite/SKILL.md ~/.openclaw/skills/xilinx-suite/
+cp -r plugins/xilinx-suite/references ~/.openclaw/skills/xilinx-suite/
+```
 
 ### 兼容性
 
-| 工具 | 指令格式 | 安装位置 | 状态 |
-|------|---------|---------|------|
-| **Claude Code** | `SKILL.md`（YAML frontmatter） | `~/.claude/skills/` | 完全支持 |
-| **OpenAI Codex** | `SKILL.md` + `AGENTS.md` | `~/.agents/skills/` | 完全支持 |
-| **OpenClaw** | `SKILL.md`（YAML frontmatter） | `~/.openclaw/skills/` | 完全支持 |
+| 工具 | 安装方式 | 格式 |
+|------|---------|------|
+| **Claude Code** | `/plugin marketplace add`（原生支持） | Plugin Marketplace |
+| **OpenAI Codex** | `install.sh` / 手动复制 | `SKILL.md` + `AGENTS.md` |
+| **OpenClaw** | `install.sh` / 手动复制 | `SKILL.md` |
 
-> 三个工具都遵循 [Agent Skills](https://agentskills.io) 开放标准。本仓库同时提供 `SKILL.md` 和 `AGENTS.md`，最大化兼容性。
+> 三个工具都遵循 [Agent Skills](https://agentskills.io) 开放标准。
 
 ---
 

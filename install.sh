@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 # ----------------------------------------------------------
-# Xilinx Skill Installer
-# Detects Claude Code / Codex / OpenClaw and installs accordingly
+# Xilinx Skill Installer (Codex CLI / OpenClaw)
+# For Claude Code, use: /plugin marketplace add QingquanYao/xilinx-skill
 # ----------------------------------------------------------
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+PLUGIN_DIR="$REPO_DIR/plugins/xilinx-suite"
 SKILL_NAME="xilinx-suite"
 
 GREEN='\033[0;32m'
@@ -19,8 +20,8 @@ copy_skill() {
     local target_dir="$1"
     local tool_name="$2"
     mkdir -p "$target_dir"
-    cp "$REPO_DIR/SKILL.md" "$target_dir/"
-    cp -r "$REPO_DIR/references" "$target_dir/"
+    cp "$PLUGIN_DIR/skills/$SKILL_NAME/SKILL.md" "$target_dir/"
+    cp -r "$PLUGIN_DIR/references" "$target_dir/"
     echo -e "  ${GREEN}[OK]${NC} $tool_name  ->  $target_dir"
     installed=$((installed + 1))
 }
@@ -30,22 +31,14 @@ echo -e "${CYAN}========================================${NC}"
 echo -e "${CYAN}  Xilinx Skill Installer${NC}"
 echo -e "${CYAN}========================================${NC}"
 echo ""
-
-# --- Claude Code ---
-CLAUDE_SKILL_DIR="$HOME/.claude/skills/$SKILL_NAME"
-echo -e "${YELLOW}[1/3]${NC} Claude Code"
-if command -v claude &>/dev/null || [ -d "$HOME/.claude" ]; then
-    copy_skill "$CLAUDE_SKILL_DIR" "Claude Code"
-else
-    echo "  [SKIP] Claude Code not detected (~/.claude not found)"
-fi
+echo -e "  Claude Code users: use ${GREEN}/plugin marketplace add QingquanYao/xilinx-skill${NC} instead"
+echo ""
 
 # --- Codex CLI ---
 CODEX_SKILL_DIR="$HOME/.agents/skills/$SKILL_NAME"
-echo -e "${YELLOW}[2/3]${NC} Codex CLI"
+echo -e "${YELLOW}[1/2]${NC} Codex CLI"
 if command -v codex &>/dev/null || [ -d "$HOME/.codex" ]; then
     copy_skill "$CODEX_SKILL_DIR" "Codex CLI"
-    # Also copy AGENTS.md to ~/.codex/ for global instructions
     mkdir -p "$HOME/.codex"
     cp "$REPO_DIR/AGENTS.md" "$HOME/.codex/AGENTS.md"
     echo -e "  ${GREEN}[OK]${NC} AGENTS.md  ->  ~/.codex/AGENTS.md"
@@ -55,7 +48,7 @@ fi
 
 # --- OpenClaw ---
 OPENCLAW_SKILL_DIR="$HOME/.openclaw/skills/$SKILL_NAME"
-echo -e "${YELLOW}[3/3]${NC} OpenClaw"
+echo -e "${YELLOW}[2/2]${NC} OpenClaw"
 if command -v openclaw &>/dev/null || command -v claw &>/dev/null || [ -d "$HOME/.openclaw" ]; then
     copy_skill "$OPENCLAW_SKILL_DIR" "OpenClaw"
 else
@@ -69,8 +62,7 @@ if [ $installed -gt 0 ]; then
 else
     echo "No supported tools detected. You can install manually:"
     echo ""
-    echo "  Claude Code:  cp -r . ~/.claude/skills/$SKILL_NAME/"
-    echo "  Codex CLI:    cp -r . ~/.agents/skills/$SKILL_NAME/"
-    echo "  OpenClaw:     cp -r . ~/.openclaw/skills/$SKILL_NAME/"
+    echo "  Codex CLI:    mkdir -p ~/.agents/skills/$SKILL_NAME && cp plugins/xilinx-suite/skills/$SKILL_NAME/SKILL.md ~/.agents/skills/$SKILL_NAME/ && cp -r plugins/xilinx-suite/references ~/.agents/skills/$SKILL_NAME/"
+    echo "  OpenClaw:     mkdir -p ~/.openclaw/skills/$SKILL_NAME && cp plugins/xilinx-suite/skills/$SKILL_NAME/SKILL.md ~/.openclaw/skills/$SKILL_NAME/ && cp -r plugins/xilinx-suite/references ~/.openclaw/skills/$SKILL_NAME/"
 fi
 echo ""

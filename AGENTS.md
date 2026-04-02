@@ -25,7 +25,7 @@ Before generating any script, confirm the following with the user:
 2. **Vivado/Vitis version**: e.g., 2023.2, 2024.1
 3. **Design goal**: What the project needs to accomplish
 
-Then load the relevant reference docs from the `references/` directory and generate complete, runnable scripts.
+Then load the relevant reference docs from the `plugins/xilinx-suite/references/` directory and generate complete, runnable scripts.
 
 ## Reference Documents
 
@@ -33,16 +33,16 @@ Load these files before generating any scripts -- do not rely on memory, as APIs
 
 | Task | Reference File |
 |------|---------------|
-| Vivado project, Block Design, synthesis, implementation | `references/vivado_guide.md` |
-| Zynq UltraScale+ PS configuration (DDR, MIO, clocks) | `references/mpsoc_ps_config.md` |
-| Block Design automation | `references/mpsoc_bd_guide.md` |
-| IO pin and timing constraints | `references/xdc_constraints.md` + `references/xdc_guide.md` |
-| Vitis HLS C/C++ to IP | `references/hls_guide.md` |
-| Vitis Unified embedded software | `references/vitis_unified_guide.md` |
-| PetaLinux system build | `references/petalinux_guide.md` |
-| JESD204B to 204C migration | `references/jesd204b_to_c_migration.md` |
-| VU9P-specific designs | `references/vu9p_guide.md` |
-| Common Vivado Tcl commands | `references/tcl_commands.md` |
+| Vivado project, Block Design, synthesis, implementation | `plugins/xilinx-suite/references/vivado_guide.md` |
+| Zynq UltraScale+ PS configuration (DDR, MIO, clocks) | `plugins/xilinx-suite/references/mpsoc_ps_config.md` |
+| Block Design automation | `plugins/xilinx-suite/references/mpsoc_bd_guide.md` |
+| IO pin and timing constraints | `plugins/xilinx-suite/references/xdc_constraints.md` + `plugins/xilinx-suite/references/xdc_guide.md` |
+| Vitis HLS C/C++ to IP | `plugins/xilinx-suite/references/hls_guide.md` |
+| Vitis Unified embedded software | `plugins/xilinx-suite/references/vitis_unified_guide.md` |
+| PetaLinux system build | `plugins/xilinx-suite/references/petalinux_guide.md` |
+| JESD204B to 204C migration | `plugins/xilinx-suite/references/jesd204b_to_c_migration.md` |
+| VU9P-specific designs | `plugins/xilinx-suite/references/vu9p_guide.md` |
+| Common Vivado Tcl commands | `plugins/xilinx-suite/references/tcl_commands.md` |
 
 ## Output Requirements
 

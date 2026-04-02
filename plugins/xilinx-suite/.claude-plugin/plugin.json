@@ -1,0 +1,26 @@
+{
+  "name": "xilinx-suite",
+  "description": "Xilinx full-toolchain assistant covering Vivado, Vitis HLS, Vitis Unified IDE, and PetaLinux -- from HLS algorithm to boot image",
+  "version": "1.0.0",
+  "author": {
+    "name": "QingquanYao"
+  },
+  "homepage": "https://github.com/QingquanYao/xilinx-skill",
+  "repository": "https://github.com/QingquanYao/xilinx-skill",
+  "license": "MIT",
+  "keywords": [
+    "vivado",
+    "fpga",
+    "mpsoc",
+    "hls",
+    "vitis",
+    "petalinux",
+    "xilinx",
+    "amd",
+    "zynq",
+    "ultrascale",
+    "xdc",
+    "tcl",
+    "jesd204"
+  ]
+}

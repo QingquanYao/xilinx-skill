@@ -38,13 +38,13 @@ C/C++ 算法 → IP 核        硬件平台设计           软件开发 / Linux
 
 | 用户描述的任务 | 需要的工具 | 加载的参考文件 |
 |--------------|-----------|--------------|
-| C/C++ 算法加速、pragma 优化、生成 IP | Vitis HLS | `references/hls_guide.md` |
-| 创建工程、Block Design、配置 PS/IP、XDC、比特流 | Vivado | `references/vivado_guide.md` + 按需加载 |
-| PS 详细配置（DDR、MIO、时钟）| Vivado | `references/mpsoc_ps_config.md` |
-| IO 引脚约束、时序约束 | Vivado | `references/xdc_constraints.md` |
-| JESD204B→C 迁移、高速串行 ADC/DAC 接口 | Vivado | `references/jesd204b_to_c_migration.md` |
-| 嵌入式软件、裸机程序、RTOS、platform/domain | Vitis Unified | `references/vitis_unified_guide.md` |
-| 嵌入式 Linux、kernel 配置、rootfs、启动镜像 | PetaLinux | `references/petalinux_guide.md` |
+| C/C++ 算法加速、pragma 优化、生成 IP | Vitis HLS | `../../references/hls_guide.md` |
+| 创建工程、Block Design、配置 PS/IP、XDC、比特流 | Vivado | `../../references/vivado_guide.md` + 按需加载 |
+| PS 详细配置（DDR、MIO、时钟）| Vivado | `../../references/mpsoc_ps_config.md` |
+| IO 引脚约束、时序约束 | Vivado | `../../references/xdc_constraints.md` |
+| JESD204B→C 迁移、高速串行 ADC/DAC 接口 | Vivado | `../../references/jesd204b_to_c_migration.md` |
+| 嵌入式软件、裸机程序、RTOS、platform/domain | Vitis Unified | `../../references/vitis_unified_guide.md` |
+| 嵌入式 Linux、kernel 配置、rootfs、启动镜像 | PetaLinux | `../../references/petalinux_guide.md` |
 
 ---
 
@@ -87,16 +87,16 @@ C/C++ 算法 → IP 核        硬件平台设计           软件开发 / Linux
 **始终在生成脚本之前先读取参考文件**，不要凭记忆生成 Tcl/XSCT/命令，因为不同 Vivado/Vitis 版本的 API 有差异。
 
 ```
-Vivado 工程  → 先读 references/vivado_guide.md
-              → 如有 PS  → 再读 references/mpsoc_ps_config.md
-              → 如有 IO  → 再读 references/xdc_constraints.md
-              → 如有 JESD204 → 再读 references/jesd204b_to_c_migration.md
+Vivado 工程  → 先读 ../../references/vivado_guide.md
+              → 如有 PS  → 再读 ../../references/mpsoc_ps_config.md
+              → 如有 IO  → 再读 ../../references/xdc_constraints.md
+              → 如有 JESD204 → 再读 ../../references/jesd204b_to_c_migration.md
 
-HLS 工程     → 先读 references/hls_guide.md
+HLS 工程     → 先读 ../../references/hls_guide.md
 
-Vitis 工程   → 先读 references/vitis_unified_guide.md
+Vitis 工程   → 先读 ../../references/vitis_unified_guide.md
 
-PetaLinux    → 先读 references/petalinux_guide.md
+PetaLinux    → 先读 ../../references/petalinux_guide.md
 ```
 
 ---
@@ -166,10 +166,10 @@ hls_ip/                  →   IP Catalog
 
 ## 参考文件
 
-- `references/vivado_guide.md`：Vivado 工程创建、Block Design、综合实现、报告分析
-- `references/mpsoc_ps_config.md`：Zynq UltraScale+ PS 详细配置（DDR、MIO、时钟参数）
-- `references/xdc_constraints.md`：XDC 约束完整指南（时序、IO、例外约束）
-- `references/hls_guide.md`：Vitis HLS 工程流程（C/C++ → IP）
-- `references/vitis_unified_guide.md`：Vitis Unified IDE 2022.x+ 工程流程
-- `references/petalinux_guide.md`：PetaLinux 系统构建流程
-- `references/jesd204b_to_c_migration.md`：JESD204B→C IP 迁移指南（端口映射、数据位宽、AXI 寄存器、常见陷阱）
+- `../../references/vivado_guide.md`：Vivado 工程创建、Block Design、综合实现、报告分析
+- `../../references/mpsoc_ps_config.md`：Zynq UltraScale+ PS 详细配置（DDR、MIO、时钟参数）
+- `../../references/xdc_constraints.md`：XDC 约束完整指南（时序、IO、例外约束）
+- `../../references/hls_guide.md`：Vitis HLS 工程流程（C/C++ → IP）
+- `../../references/vitis_unified_guide.md`：Vitis Unified IDE 2022.x+ 工程流程
+- `../../references/petalinux_guide.md`：PetaLinux 系统构建流程
+- `../../references/jesd204b_to_c_migration.md`：JESD204B→C IP 迁移指南（端口映射、数据位宽、AXI 寄存器、常见陷阱）

@@ -8,11 +8,11 @@
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License"/>
 </p>
 
-# Xilinx Full-Toolchain Skill for Claude Code
+# Xilinx Full-Toolchain Skill for AI Coding Assistants
 
 > **Let AI handle the tedious Tcl scripting. You focus on the architecture.**
 
-A Claude Code skill that turns natural language into production-ready Vivado / Vitis HLS / Vitis Unified / PetaLinux scripts. Describe what you want to build, and get runnable Tcl, XDC, shell scripts, and C/C++ templates -- covering the complete FPGA/MPSoC design flow from HLS algorithm to boot image.
+An AI coding skill (Claude Code / Codex / OpenClaw) that turns natural language into production-ready Vivado / Vitis HLS / Vitis Unified / PetaLinux scripts. Describe what you want to build, and get runnable Tcl, XDC, shell scripts, and C/C++ templates -- covering the complete FPGA/MPSoC design flow from HLS algorithm to boot image.
 
 ---
 
@@ -43,68 +43,64 @@ Vitis HLS ──> Vivado ──> Vitis Unified / PetaLinux
 
 ## Installation
 
-### One-Line Install (Auto-Detect)
+### Claude Code (Recommended)
 
-The installer automatically detects which tools you have and installs accordingly.
+This repo is a Claude Code Plugin Marketplace. Install with one command:
 
-**macOS / Linux:**
-```bash
-git clone https://github.com/QingquanYao/xilinx-skill.git
-cd xilinx-skill && bash install.sh
+```
+/plugin marketplace add QingquanYao/xilinx-skill
 ```
 
-**Windows (PowerShell):**
-```powershell
-git clone https://github.com/QingquanYao/xilinx-skill.git
-cd xilinx-skill; .\install.ps1
+Then install the plugin:
+
+```
+/plugin install xilinx-suite
 ```
 
-### Manual Install
+That's it. The skill is ready to use.
 
-<details>
-<summary><b>Claude Code</b></summary>
+### OpenAI Codex CLI
 
 ```bash
 git clone https://github.com/QingquanYao/xilinx-skill.git
-mkdir -p ~/.claude/skills/xilinx-suite
-cp xilinx-skill/SKILL.md ~/.claude/skills/xilinx-suite/
-cp -r xilinx-skill/references ~/.claude/skills/xilinx-suite/
+cd xilinx-skill && bash install.sh        # macOS/Linux
+cd xilinx-skill; .\install.ps1            # Windows PowerShell
 ```
-</details>
 
-<details>
-<summary><b>OpenAI Codex CLI</b></summary>
+Or manually:
 
 ```bash
-git clone https://github.com/QingquanYao/xilinx-skill.git
 mkdir -p ~/.agents/skills/xilinx-suite
-cp xilinx-skill/SKILL.md ~/.agents/skills/xilinx-suite/
-cp -r xilinx-skill/references ~/.agents/skills/xilinx-suite/
-# Optional: global instructions
-cp xilinx-skill/AGENTS.md ~/.codex/AGENTS.md
+cp plugins/xilinx-suite/skills/xilinx-suite/SKILL.md ~/.agents/skills/xilinx-suite/
+cp -r plugins/xilinx-suite/references ~/.agents/skills/xilinx-suite/
+cp AGENTS.md ~/.codex/AGENTS.md
 ```
-</details>
 
-<details>
-<summary><b>OpenClaw</b></summary>
+### OpenClaw
 
 ```bash
 git clone https://github.com/QingquanYao/xilinx-skill.git
-mkdir -p ~/.openclaw/skills/xilinx-suite
-cp xilinx-skill/SKILL.md ~/.openclaw/skills/xilinx-suite/
-cp -r xilinx-skill/references ~/.openclaw/skills/xilinx-suite/
+cd xilinx-skill && bash install.sh        # macOS/Linux
+cd xilinx-skill; .\install.ps1            # Windows PowerShell
 ```
-</details>
+
+Or manually:
+
+```bash
+mkdir -p ~/.openclaw/skills/xilinx-suite
+cp plugins/xilinx-suite/skills/xilinx-suite/SKILL.md ~/.openclaw/skills/xilinx-suite/
+cp -r plugins/xilinx-suite/references ~/.openclaw/skills/xilinx-suite/
+```
 
 ### Compatibility
 
-| Tool | Instruction Format | Install Location | Status |
-|------|-------------------|-----------------|--------|
-| **Claude Code** | `SKILL.md` (YAML frontmatter) | `~/.claude/skills/` | Fully supported |
-| **OpenAI Codex** | `SKILL.md` + `AGENTS.md` | `~/.agents/skills/` | Fully supported |
-| **OpenClaw** | `SKILL.md` (YAML frontmatter) | `~/.openclaw/skills/` | Fully supported |
+| Tool | Install Method | Format |
+|------|---------------|--------|
+| **Claude Code** | `/plugin marketplace add` (native) | Plugin Marketplace |
+| **OpenAI Codex** | `install.sh` / manual copy | `SKILL.md` + `AGENTS.md` |
+| **OpenClaw** | `install.sh` / manual copy | `SKILL.md` |
 
-> All three tools follow the [Agent Skills](https://agentskills.io) open standard. This repo ships both `SKILL.md` and `AGENTS.md` for maximum compatibility.
+> All three tools follow the [Agent Skills](https://agentskills.io) open standard.
 
 ---
 

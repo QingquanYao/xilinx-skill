@@ -17,10 +17,10 @@ Thanks for your interest in contributing! This skill is community-maintained and
 
 ### Adding a New Reference Document
 
-Place your file in the `references/` directory. Follow the existing naming convention:
+Place your file in the `plugins/xilinx-suite/references/` directory. Follow the existing naming convention:
 
 ```
-references/
+plugins/xilinx-suite/references/
 ├── <topic>_guide.md          # General guide
 ├── <device>_guide.md         # Device-specific guide
 └── <feature>_migration.md    # Migration guide
@@ -34,7 +34,7 @@ references/
 
 ### Updating SKILL.md
 
-If you add a new reference doc, also update `SKILL.md`:
+If you add a new reference doc, also update `plugins/xilinx-suite/skills/xilinx-suite/SKILL.md`:
 - Add the file to the routing table (the "Tool Routing Table" section)
 - Add trigger keywords to the `description` frontmatter field
 - Add it to the "Reference Files" section at the bottom
@@ -64,10 +64,10 @@ If you modify `SKILL.md`, keep `AGENTS.md` in sync -- it's the Codex CLI equival
 
 ### 添加新的参考文档
 
-将文件放在 `references/` 目录下，遵循现有命名规范：
+将文件放在 `plugins/xilinx-suite/references/` 目录下，遵循现有命名规范：
 
 ```
-references/
+plugins/xilinx-suite/references/
 ├── <主题>_guide.md            # 通用指南
 ├── <器件>_guide.md            # 器件专用指南
 └── <功能>_migration.md        # 迁移指南
@@ -81,7 +81,7 @@ references/
 
 ### 更新 SKILL.md
 
-如果你添加了新的参考文档，同时更新 `SKILL.md`：
+如果你添加了新的参考文档，同时更新 `plugins/xilinx-suite/skills/xilinx-suite/SKILL.md`：
 - 将文件添加到工具路由表
 - 将触发关键词添加到 `description` frontmatter 字段
 - 添加到底部的"参考文件"章节

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "xilinx-skill",
+  "description": "Xilinx (AMD) FPGA/MPSoC full-toolchain skills for AI coding assistants",
+  "owner": {
+    "name": "QingquanYao"
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "xilinx-suite",
+      "source": "./plugins/xilinx-suite",
+      "description": "Xilinx full-toolchain assistant covering Vivado, Vitis HLS, Vitis Unified IDE, and PetaLinux -- from HLS algorithm to boot image",
+      "version": "1.0.0",
+      "category": "development",
+      "author": {
+        "name": "QingquanYao"
+      },
+      "homepage": "https://github.com/QingquanYao/xilinx-skill",
+      "repository": "https://github.com/QingquanYao/xilinx-skill",
+      "license": "MIT",
+      "keywords": [
+        "vivado",
+        "fpga",
+        "mpsoc",
+        "hls",
+        "vitis",
+        "petalinux",
+        "xilinx",
+        "amd",
+        "zynq",
+        "ultrascale",
+        "xdc",
+        "tcl",
+        "jesd204"
+      ]
+    }
+  ]
+}
