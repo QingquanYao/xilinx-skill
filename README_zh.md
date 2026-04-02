@@ -18,13 +18,13 @@
 
 ## 为什么需要这个 Skill？
 
-| 痛点 | 本 Skill 如何解决 |
-|------|------------------|
-| Vivado Tcl API 跨版本变化大 | 参考文档锁定版本特定 API，自动选择正确的命令 |
-| PS 配置参数多达 200+ 项 | 引导式问答 + 经过验证的 DDR/MIO/时钟 Tcl 模板 |
-| XDC 约束语法容易出错 | 从自然语言描述直接生成正确的 `set_property` / `create_clock` |
-| 跨工具交接流程复杂 | 自动化 HLS IP -> Vivado -> XSA -> Vitis/PetaLinux 数据流 |
-| JESD204B -> 204C 迁移风险高 | 提供端口映射、寄存器差异的分步迁移指南 |
+| 痛点                     | 本 Skill 如何解决                                       |
+| ---------------------- | -------------------------------------------------- |
+| Vivado Tcl API 跨版本变化大  | 参考文档锁定版本特定 API，自动选择正确的命令                           |
+| PS 配置参数多达 200+ 项       | 引导式问答 + 经过验证的 DDR/MIO/时钟 Tcl 模板                    |
+| XDC 约束语法容易出错           | 从自然语言描述直接生成正确的 `set_property` / `create_clock`     |
+| 跨工具交接流程复杂              | 自动化 HLS IP -> Vivado -> XSA -> Vitis/PetaLinux 数据流 |
+| JESD204B -> 204C 迁移风险高 | 提供端口映射、寄存器差异的分步迁移指南                                |
 
 ---
 
@@ -41,19 +41,74 @@ Vitis HLS ──> Vivado ──> Vitis Unified / PetaLinux
 
 ---
 
-## 快速开始
+## 安装
 
-### 1. 安装 Skill
+### 一键安装（自动检测）
 
-将本仓库克隆到你的 Claude Code Skills 目录：
+安装脚本会自动检测你安装了哪些工具并配置。
+
+**macOS / Linux：**
+```bash
+git clone https://github.com/QingquanYao/xilinx-skill.git
+cd xilinx-skill && bash install.sh
+```
+
+**Windows (PowerShell)：**
+```powershell
+git clone https://github.com/QingquanYao/xilinx-skill.git
+cd xilinx-skill; .\install.ps1
+```
+
+### 手动安装
+
+<details>
+<summary><b>Claude Code</b></summary>
 
 ```bash
 git clone https://github.com/QingquanYao/xilinx-skill.git
+mkdir -p ~/.claude/skills/xilinx-suite
+cp xilinx-skill/SKILL.md ~/.claude/skills/xilinx-suite/
+cp -r xilinx-skill/references ~/.claude/skills/xilinx-suite/
 ```
+</details>
 
-然后在 Claude Code 配置中添加该 Skill 路径。
+<details>
+<summary><b>OpenAI Codex CLI</b></summary>
 
-### 2. 开始设计
+```bash
+git clone https://github.com/QingquanYao/xilinx-skill.git
+mkdir -p ~/.agents/skills/xilinx-suite
+cp xilinx-skill/SKILL.md ~/.agents/skills/xilinx-suite/
+cp -r xilinx-skill/references ~/.agents/skills/xilinx-suite/
+# 可选：全局指令
+cp xilinx-skill/AGENTS.md ~/.codex/AGENTS.md
+```
+</details>
+
+<details>
+<summary><b>OpenClaw</b></summary>
+
+```bash
+git clone https://github.com/QingquanYao/xilinx-skill.git
+mkdir -p ~/.openclaw/skills/xilinx-suite
+cp xilinx-skill/SKILL.md ~/.openclaw/skills/xilinx-suite/
+cp -r xilinx-skill/references ~/.openclaw/skills/xilinx-suite/
+```
+</details>
+
+### 兼容性
+
+| 工具 | 指令格式 | 安装位置 | 状态 |
+|------|---------|---------|------|
+| **Claude Code** | `SKILL.md`（YAML frontmatter） | `~/.claude/skills/` | 完全支持 |
+| **OpenAI Codex** | `SKILL.md` + `AGENTS.md` | `~/.agents/skills/` | 完全支持 |
+| **OpenClaw** | `SKILL.md`（YAML frontmatter） | `~/.openclaw/skills/` | 完全支持 |
+
+> 三个工具都遵循 [Agent Skills](https://agentskills.io) 开放标准。本仓库同时提供 `SKILL.md` 和 `AGENTS.md`，最大化兼容性。
+
+---
+
+## 使用方法
 
 用自然语言描述你的任务即可，例如：
 
@@ -70,6 +125,7 @@ git clone https://github.com/QingquanYao/xilinx-skill.git
 ```
 
 Skill 会自动：
+
 1. 询问必要信息（目标器件、版本、接口等）
 2. 加载相关参考文档
 3. 生成完整可运行的脚本
@@ -79,19 +135,19 @@ Skill 会自动：
 
 ## 参考文档库
 
-| 文件 | 内容覆盖 |
-|------|---------|
-| `vivado_guide.md` | 工程创建、Block Design、综合、实现、报告分析 |
-| `mpsoc_ps_config.md` | Zynq UltraScale+ PS 配置 -- DDR4、MIO、时钟、中断 |
-| `mpsoc_bd_guide.md` | Block Design 自动化模式与最佳实践 |
-| `xdc_constraints.md` | 时序约束、IO 标准、引脚分配 |
-| `xdc_guide.md` | XDC 语法快速参考 |
-| `hls_guide.md` | Vitis HLS C/C++ 到 IP 流程、pragma、优化 |
-| `vitis_unified_guide.md` | Vitis 2022.x+ 平台、域、应用创建 |
-| `petalinux_guide.md` | BSP 配置、内核、rootfs、启动镜像生成 |
-| `jesd204b_to_c_migration.md` | JESD204B 到 204C IP 迁移 -- 端口、寄存器、常见陷阱 |
-| `vu9p_guide.md` | VU9P 器件专用设计指南 |
-| `tcl_commands.md` | 常用 Vivado Tcl 命令参考 |
+| 文件                           | 内容覆盖                                     |
+| ---------------------------- | ---------------------------------------- |
+| `vivado_guide.md`            | 工程创建、Block Design、综合、实现、报告分析             |
+| `mpsoc_ps_config.md`         | Zynq UltraScale+ PS 配置 -- DDR4、MIO、时钟、中断 |
+| `mpsoc_bd_guide.md`          | Block Design 自动化模式与最佳实践                  |
+| `xdc_constraints.md`         | 时序约束、IO 标准、引脚分配                          |
+| `xdc_guide.md`               | XDC 语法快速参考                               |
+| `hls_guide.md`               | Vitis HLS C/C++ 到 IP 流程、pragma、优化        |
+| `vitis_unified_guide.md`     | Vitis 2022.x+ 平台、域、应用创建                  |
+| `petalinux_guide.md`         | BSP 配置、内核、rootfs、启动镜像生成                  |
+| `jesd204b_to_c_migration.md` | JESD204B 到 204C IP 迁移 -- 端口、寄存器、常见陷阱     |
+| `vu9p_guide.md`              | VU9P 器件专用设计指南                            |
+| `tcl_commands.md`            | 常用 Vivado Tcl 命令参考                       |
 
 ---
 
@@ -122,13 +178,21 @@ project_root/
 
 ## 最佳搭档
 
-本 Skill 可与 [Vivado MCP Server](https://github.com/QingquanYao/vivado-mcp) 配合使用，后者提供 Vivado 实时会话控制 -- 直接在 Claude Code 中运行综合、查看时序报告、烧写器件。
+本 Skill 可与 [Vivado MCP Server](https://github.com/mapleleavessssssss-wq/vivado-mcp.git) 配合使用，后者提供 Vivado 实时会话控制 -- 直接在 Claude Code 中运行综合、查看时序报告、烧写器件。
 
 ---
 
 ## 贡献
 
-欢迎提 Issue 和 PR。如果你有其他 Xilinx IP 核或器件系列的参考文档，欢迎贡献。
+本项目由社区共同维护，欢迎参与贡献！
+
+**贡献方式：**
+- 添加新 IP 核或器件系列的参考文档
+- 补充版本特定的 API 细节
+- 修正错误或补全 Tcl API 覆盖
+- 翻译参考文档
+
+详见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 
 ---
 

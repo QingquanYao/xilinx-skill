@@ -18,13 +18,13 @@ A Claude Code skill that turns natural language into production-ready Vivado / V
 
 ## Why This Skill?
 
-| Pain Point | How This Skill Helps |
-|---|---|
-| Vivado Tcl API changes across versions | Reference docs pin version-specific APIs; the skill picks the right one |
-| PS configuration is 200+ parameters | Guided questionnaire + validated Tcl templates for DDR/MIO/clocks |
-| XDC constraint syntax is error-prone | Generates correct `set_property` / `create_clock` from plain descriptions |
-| Cross-tool handoff is confusing | Automates HLS IP -> Vivado -> XSA -> Vitis/PetaLinux data flow |
-| JESD204B -> 204C migration is risky | Step-by-step migration guide with port mapping and register diffs |
+| Pain Point                             | How This Skill Helps                                                      |
+| -------------------------------------- | ------------------------------------------------------------------------- |
+| Vivado Tcl API changes across versions | Reference docs pin version-specific APIs; the skill picks the right one   |
+| PS configuration is 200+ parameters    | Guided questionnaire + validated Tcl templates for DDR/MIO/clocks         |
+| XDC constraint syntax is error-prone   | Generates correct `set_property` / `create_clock` from plain descriptions |
+| Cross-tool handoff is confusing        | Automates HLS IP -> Vivado -> XSA -> Vitis/PetaLinux data flow            |
+| JESD204B -> 204C migration is risky    | Step-by-step migration guide with port mapping and register diffs         |
 
 ---
 
@@ -41,20 +41,74 @@ Vitis HLS ──> Vivado ──> Vitis Unified / PetaLinux
 
 ---
 
-## Quick Start
+## Installation
 
-### 1. Install the Skill
+### One-Line Install (Auto-Detect)
 
-Copy this repository into your Claude Code skills directory:
+The installer automatically detects which tools you have and installs accordingly.
 
+**macOS / Linux:**
 ```bash
-# Clone to your Claude Code skills location
 git clone https://github.com/QingquanYao/xilinx-skill.git
+cd xilinx-skill && bash install.sh
 ```
 
-Then add the skill path to your Claude Code configuration.
+**Windows (PowerShell):**
+```powershell
+git clone https://github.com/QingquanYao/xilinx-skill.git
+cd xilinx-skill; .\install.ps1
+```
 
-### 2. Start Designing
+### Manual Install
+
+<details>
+<summary><b>Claude Code</b></summary>
+
+```bash
+git clone https://github.com/QingquanYao/xilinx-skill.git
+mkdir -p ~/.claude/skills/xilinx-suite
+cp xilinx-skill/SKILL.md ~/.claude/skills/xilinx-suite/
+cp -r xilinx-skill/references ~/.claude/skills/xilinx-suite/
+```
+</details>
+
+<details>
+<summary><b>OpenAI Codex CLI</b></summary>
+
+```bash
+git clone https://github.com/QingquanYao/xilinx-skill.git
+mkdir -p ~/.agents/skills/xilinx-suite
+cp xilinx-skill/SKILL.md ~/.agents/skills/xilinx-suite/
+cp -r xilinx-skill/references ~/.agents/skills/xilinx-suite/
+# Optional: global instructions
+cp xilinx-skill/AGENTS.md ~/.codex/AGENTS.md
+```
+</details>
+
+<details>
+<summary><b>OpenClaw</b></summary>
+
+```bash
+git clone https://github.com/QingquanYao/xilinx-skill.git
+mkdir -p ~/.openclaw/skills/xilinx-suite
+cp xilinx-skill/SKILL.md ~/.openclaw/skills/xilinx-suite/
+cp -r xilinx-skill/references ~/.openclaw/skills/xilinx-suite/
+```
+</details>
+
+### Compatibility
+
+| Tool | Instruction Format | Install Location | Status |
+|------|-------------------|-----------------|--------|
+| **Claude Code** | `SKILL.md` (YAML frontmatter) | `~/.claude/skills/` | Fully supported |
+| **OpenAI Codex** | `SKILL.md` + `AGENTS.md` | `~/.agents/skills/` | Fully supported |
+| **OpenClaw** | `SKILL.md` (YAML frontmatter) | `~/.openclaw/skills/` | Fully supported |
+
+> All three tools follow the [Agent Skills](https://agentskills.io) open standard. This repo ships both `SKILL.md` and `AGENTS.md` for maximum compatibility.
+
+---
+
+## Usage
 
 Just describe your task in natural language. Examples:
 
@@ -71,6 +125,7 @@ Just describe your task in natural language. Examples:
 ```
 
 The skill will:
+
 1. Ask clarifying questions (target device, version, interfaces ...)
 2. Load the relevant reference docs
 3. Generate complete, runnable scripts
@@ -80,19 +135,19 @@ The skill will:
 
 ## Reference Library
 
-| File | Coverage |
-|------|----------|
-| `vivado_guide.md` | Project creation, Block Design, synthesis, implementation, reports |
-| `mpsoc_ps_config.md` | Zynq UltraScale+ PS config -- DDR4, MIO, clocks, interrupts |
-| `mpsoc_bd_guide.md` | Block Design automation patterns and best practices |
-| `xdc_constraints.md` | Timing constraints, IO standards, pin assignments |
-| `xdc_guide.md` | XDC syntax quick reference |
-| `hls_guide.md` | Vitis HLS C/C++ to IP flow, pragmas, optimization |
-| `vitis_unified_guide.md` | Vitis 2022.x+ platform, domain, application creation |
-| `petalinux_guide.md` | BSP config, kernel, rootfs, boot image generation |
-| `jesd204b_to_c_migration.md` | JESD204B to 204C IP migration -- ports, registers, pitfalls |
-| `vu9p_guide.md` | VU9P-specific design notes |
-| `tcl_commands.md` | Common Vivado Tcl command reference |
+| File                         | Coverage                                                           |
+| ---------------------------- | ------------------------------------------------------------------ |
+| `vivado_guide.md`            | Project creation, Block Design, synthesis, implementation, reports |
+| `mpsoc_ps_config.md`         | Zynq UltraScale+ PS config -- DDR4, MIO, clocks, interrupts        |
+| `mpsoc_bd_guide.md`          | Block Design automation patterns and best practices                |
+| `xdc_constraints.md`         | Timing constraints, IO standards, pin assignments                  |
+| `xdc_guide.md`               | XDC syntax quick reference                                         |
+| `hls_guide.md`               | Vitis HLS C/C++ to IP flow, pragmas, optimization                  |
+| `vitis_unified_guide.md`     | Vitis 2022.x+ platform, domain, application creation               |
+| `petalinux_guide.md`         | BSP config, kernel, rootfs, boot image generation                  |
+| `jesd204b_to_c_migration.md` | JESD204B to 204C IP migration -- ports, registers, pitfalls        |
+| `vu9p_guide.md`              | VU9P-specific design notes                                         |
+| `tcl_commands.md`            | Common Vivado Tcl command reference                                |
 
 ---
 
@@ -123,13 +178,21 @@ project_root/
 
 ## Works Great With
 
-This skill is designed to work alongside the [Vivado MCP Server](https://github.com/QingquanYao/vivado-mcp), which provides live Vivado session control -- run synthesis, read timing reports, and program devices directly from Claude Code.
+This skill is designed to work alongside the [Vivado MCP Server](https://github.com/mapleleavessssssss-wq/vivado-mcp.git), which provides live Vivado session control -- run synthesis, read timing reports, and program devices directly from Claude Code.
 
 ---
 
 ## Contributing
 
-Issues and PRs are welcome. If you have reference docs for additional Xilinx IP cores or device families, feel free to contribute.
+This is a community-maintained skill -- contributions are welcome and encouraged!
+
+**Ways to contribute:**
+- Add reference docs for new IP cores or device families
+- Improve existing guides with version-specific details
+- Fix errors or add missing Tcl API coverage
+- Translate reference docs
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ---
 
