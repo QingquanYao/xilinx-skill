@@ -172,9 +172,16 @@ project_root/
 
 ---
 
-## Works Great With
+## Recommended MCP Servers
 
-This skill is designed to work alongside the [Vivado MCP Server](https://github.com/mapleleavessssssss-wq/vivado-mcp.git), which provides live Vivado session control -- run synthesis, read timing reports, and program devices directly from Claude Code.
+This skill works best when paired with the following MCP servers, which give AI direct control over Xilinx tools and infrastructure:
+
+| MCP Server | Description |
+|-----------|-------------|
+| [vivado-mcp](https://github.com/QingquanYao/vivado-mcp) | AI-driven Vivado session control -- synthesis, timing reports, CRITICAL WARNING diagnosis, device programming |
+| [vitis_mcp](https://github.com/QingquanYao/vitis_mcp) | AI-driven Vitis control -- end-to-end embedded software automation |
+| [ssh-mcp](https://github.com/tufantunc/ssh-mcp) | SSH into VMs to run PetaLinux builds -- supports sudo and timeout protection |
+| [vmware-mcp](https://github.com/ZacharyZcR/vmware-mcp) | VMware Workstation Pro VM control -- manage PetaLinux build VMs |
 
 ---
 
