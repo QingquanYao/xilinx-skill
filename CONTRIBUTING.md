@@ -32,6 +32,8 @@ plugins/xilinx-suite/references/
 - Specify which Vivado/Vitis versions the content applies to
 - Organize with clear headers so the AI can locate specific sections
 
+A ready-to-use template is available at [`references/_TEMPLATE.md`](plugins/xilinx-suite/references/_TEMPLATE.md) -- copy it, rename it, and fill in the `{{...}}` placeholders.
+
 ### Updating SKILL.md
 
 If you add a new reference doc, also update `plugins/xilinx-suite/skills/xilinx-suite/SKILL.md`:
@@ -78,6 +80,8 @@ plugins/xilinx-suite/references/
 - 包含可直接复制粘贴的 Tcl/命令示例
 - 标明适用的 Vivado/Vitis 版本
 - 使用清晰的标题结构，便于 AI 定位特定内容
+
+现成模板在 [`references/_TEMPLATE.md`](plugins/xilinx-suite/references/_TEMPLATE.md)，复制后重命名，填写 `{{...}}` 占位符即可。
 
 ### 更新 SKILL.md
 
