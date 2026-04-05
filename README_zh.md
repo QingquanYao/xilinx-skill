@@ -16,6 +16,19 @@
 
 ---
 
+## 推荐搭配的 MCP Server
+
+本 Skill 搭配以下 MCP Server 使用效果最佳，可让 AI 直接控制 Xilinx 工具链和基础设施：
+
+| MCP Server | 说明 |
+|-----------|------|
+| [vivado-mcp](https://github.com/QingquanYao/vivado-mcp) | AI 驱动的 Vivado 会话控制 -- 综合、时序报告、CRITICAL WARNING 自动诊断、烧写器件 |
+| [vitis_mcp](https://github.com/QingquanYao/vitis_mcp) | AI 驱动的 Vitis 控制 -- 嵌入式软件全流程自动化 |
+| [ssh-mcp](https://github.com/tufantunc/ssh-mcp) | 通过 SSH 连接虚拟机执行 PetaLinux 编译 -- 支持 sudo 和超时保护 |
+| [vmware-mcp](https://github.com/ZacharyZcR/vmware-mcp) | VMware Workstation Pro 虚拟机控制 -- 管理 PetaLinux 构建环境 |
+
+---
+
 ## 为什么需要这个 Skill？
 
 | 痛点                     | 本 Skill 如何解决                                       |
@@ -169,19 +182,6 @@ project_root/
     ├── build.sh
     └── config/
 ```
-
----
-
-## 推荐搭配的 MCP Server
-
-本 Skill 搭配以下 MCP Server 使用效果最佳，可让 AI 直接控制 Xilinx 工具链和基础设施：
-
-| MCP Server | 说明 |
-|-----------|------|
-| [vivado-mcp](https://github.com/QingquanYao/vivado-mcp) | AI 驱动的 Vivado 会话控制 -- 综合、时序报告、CRITICAL WARNING 自动诊断、烧写器件 |
-| [vitis_mcp](https://github.com/QingquanYao/vitis_mcp) | AI 驱动的 Vitis 控制 -- 嵌入式软件全流程自动化 |
-| [ssh-mcp](https://github.com/tufantunc/ssh-mcp) | 通过 SSH 连接虚拟机执行 PetaLinux 编译 -- 支持 sudo 和超时保护 |
-| [vmware-mcp](https://github.com/ZacharyZcR/vmware-mcp) | VMware Workstation Pro 虚拟机控制 -- 管理 PetaLinux 构建环境 |
 
 ---
 

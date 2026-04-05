@@ -16,6 +16,19 @@ An AI coding skill (Claude Code / Codex / OpenClaw) that turns natural language 
 
 ---
 
+## Recommended MCP Servers
+
+This skill works best when paired with the following MCP servers, which give AI direct control over Xilinx tools and infrastructure:
+
+| MCP Server | Description |
+|-----------|-------------|
+| [vivado-mcp](https://github.com/QingquanYao/vivado-mcp) | AI-driven Vivado session control -- synthesis, timing reports, CRITICAL WARNING diagnosis, device programming |
+| [vitis_mcp](https://github.com/QingquanYao/vitis_mcp) | AI-driven Vitis control -- end-to-end embedded software automation |
+| [ssh-mcp](https://github.com/tufantunc/ssh-mcp) | SSH into VMs to run PetaLinux builds -- supports sudo and timeout protection |
+| [vmware-mcp](https://github.com/ZacharyZcR/vmware-mcp) | VMware Workstation Pro VM control -- manage PetaLinux build VMs |
+
+---
+
 ## Why This Skill?
 
 | Pain Point                             | How This Skill Helps                                                      |
@@ -169,19 +182,6 @@ project_root/
     ├── build.sh
     └── config/
 ```
-
----
-
-## Recommended MCP Servers
-
-This skill works best when paired with the following MCP servers, which give AI direct control over Xilinx tools and infrastructure:
-
-| MCP Server | Description |
-|-----------|-------------|
-| [vivado-mcp](https://github.com/QingquanYao/vivado-mcp) | AI-driven Vivado session control -- synthesis, timing reports, CRITICAL WARNING diagnosis, device programming |
-| [vitis_mcp](https://github.com/QingquanYao/vitis_mcp) | AI-driven Vitis control -- end-to-end embedded software automation |
-| [ssh-mcp](https://github.com/tufantunc/ssh-mcp) | SSH into VMs to run PetaLinux builds -- supports sudo and timeout protection |
-| [vmware-mcp](https://github.com/ZacharyZcR/vmware-mcp) | VMware Workstation Pro VM control -- manage PetaLinux build VMs |
 
 ---
 
