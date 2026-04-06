@@ -10,7 +10,8 @@ description: >
   只要用户提到以下任何内容，请立即使用本 skill：
   vivado、vitis、hls、高层次综合、vitis_hls、petalinux、zynq、ultrascale、fpga、mpsoc、xsa、比特流、
   block design、综合、实现、xdc、约束、IP核、AXI、嵌入式软件、裸机程序、linux镜像、bsp、设备树、
-  jesd204、jesd204b、jesd204c、204b升级204c、204b迁移、高速串行、DAC、ADC、AD9144、AD9250、AD9680
+  jesd204、jesd204b、jesd204c、204b升级204c、204b迁移、高速串行、DAC、ADC、AD9144、AD9250、AD9680、
+  grpc、protobuf、rpc、远程调用、上位机通信、petalinux grpc、嵌入式 rpc、zmq 迁移 grpc、udmabuf、axi dma 上位机
   请在用户描述任何 Xilinx/AMD FPGA 硬件或软件设计任务时主动使用本 skill。
 ---
 
@@ -45,6 +46,7 @@ C/C++ 算法 → IP 核        硬件平台设计           软件开发 / Linux
 | JESD204B→C 迁移、高速串行 ADC/DAC 接口 | Vivado | `../../references/jesd204b_to_c_migration.md` |
 | 嵌入式软件、裸机程序、RTOS、platform/domain | Vitis Unified | `../../references/vitis_unified_guide.md` |
 | 嵌入式 Linux、kernel 配置、rootfs、启动镜像 | PetaLinux | `../../references/petalinux_guide.md` |
+| PetaLinux 上跑 gRPC C++ 服务端 / Python 客户端、ZMQ→gRPC 迁移、udmabuf+AXI DMA 暴露 RPC | PetaLinux | `../../references/grpc_on_petalinux.md` |
 
 ---
 
@@ -97,6 +99,7 @@ HLS 工程     → 先读 ../../references/hls_guide.md
 Vitis 工程   → 先读 ../../references/vitis_unified_guide.md
 
 PetaLinux    → 先读 ../../references/petalinux_guide.md
+              → 如需 gRPC（C++ server / Python client、ZMQ 迁移）→ 再读 ../../references/grpc_on_petalinux.md
 ```
 
 ---
@@ -173,3 +176,4 @@ hls_ip/                  →   IP Catalog
 - `../../references/vitis_unified_guide.md`：Vitis Unified IDE 2022.x+ 工程流程
 - `../../references/petalinux_guide.md`：PetaLinux 系统构建流程
 - `../../references/jesd204b_to_c_migration.md`：JESD204B→C IP 迁移指南（端口映射、数据位宽、AXI 寄存器、常见陷阱）
+- `../../references/grpc_on_petalinux.md`：PetaLinux + gRPC 端到端部署指南（rootfs 配置、libutf8_range 软链、VM 预生成 .pb.cc + 板上 g++、udmabuf/AXI DMA RPC 暴露、ZMQ→gRPC 迁移、常见 RCU stall 等陷阱）
