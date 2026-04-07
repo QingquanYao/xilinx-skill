@@ -124,7 +124,7 @@ void my_func(hls::stream<axis_pkt_t> &in_stream,
 set proj_name    "my_func_proj"
 set proj_dir     "./01_hls"
 set top_function "my_func"
-set part_number  "xczu19eg-ffvc1760-2-i"   ;# 替换为目标器件
+set part_number  "<your-part-number>"      ;# 替换为目标器件，例如 xczuXXeg-ffvcXXXX-X-i
 set clk_period   "10"                       ;# 目标时钟周期（ns），10ns = 100MHz
 
 # ——— 创建工程 ———

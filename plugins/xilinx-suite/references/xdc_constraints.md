@@ -47,14 +47,14 @@ set_property PACKAGE_PIN <引脚号> [get_ports <端口名>]
 set_property IOSTANDARD  <标准>   [get_ports <端口名>]
 ```
 
-### ZU19EG PL IO Bank 电平参考
+### PL IO Bank 电平参考（通用原则）
 
-| Bank 类型 | Bank 编号（参考） | 推荐 IOSTANDARD |
-|-----------|-----------------|----------------|
-| HP（1.8V）| Bank 64~67 | LVCMOS18 |
-| HD（3.3V/1.8V）| Bank 44~45 | LVCMOS33 / LVCMOS18 |
+| Bank 类型 | 典型 VCCIO | 推荐 IOSTANDARD |
+|-----------|-----------|----------------|
+| HP（High-Performance） | 1.8V 及以下 | LVCMOS18、LVDS、HSTL/SSTL 等 |
+| HD（High-Density） | 1.8V / 3.3V | LVCMOS18 / LVCMOS33 |
 
-> ⚠️ **同一 Bank 内所有 IO 必须使用相同电平组**（VCCIO 统一），混用会导致错误。
+> ⚠️ **同一 Bank 内所有 IO 必须使用相同电平组**（VCCIO 统一），混用会导致错误。具体 Bank 编号请查阅目标器件的 Package/Pinout 手册。
 
 ### 常用 IO 标准
 ```xdc
@@ -174,7 +174,7 @@ set_property C_USER_SCAN_CHAIN    1          [get_debug_cores dbg_hub]
 ```xdc
 ##############################################################
 # 文件名: design.xdc
-# 工程:   ZU19EG 演示工程
+# 工程:   ZynqMP 演示工程
 # 说明:   PL 端 IO 约束（PS 端引脚由 Vivado 自动处理）
 ##############################################################
 

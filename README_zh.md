@@ -50,7 +50,7 @@ Vitis HLS ──> Vivado ──> Vitis Unified / PetaLinux
 
 **工具：** Vivado、Vitis HLS、Vitis Unified IDE (2022.x+)、PetaLinux
 
-**器件：** Zynq UltraScale+ MPSoC (ZU15EG、ZU19EG、ZCU104 ...)、Virtex UltraScale+ (VU9P)、Kintex UltraScale、7 系列、Versal
+**器件：** Zynq UltraScale+ MPSoC（CG/EG/EV 全系，ZCU10x 评估板及自制板）、Virtex/Kintex UltraScale+/UltraScale、7 系列、Versal ACAP
 
 ---
 
@@ -122,13 +122,13 @@ cp -r plugins/xilinx-suite/references ~/.openclaw/skills/xilinx-suite/
 用自然语言描述你的任务即可，例如：
 
 ```
-> 为 ZCU104 创建 Vivado 工程，包含 Zynq PS、2 个 AXI GPIO 和 1 个 BRAM 控制器
+> 为我的 ZynqMP 板卡创建 Vivado 工程，包含 Zynq PS、2 个 AXI GPIO 和 1 个 BRAM 控制器
 
-> 为 VU9P 生成 200MHz 系统时钟的 XDC 约束，IO 标准为 LVDS
+> 为我的 Virtex UltraScale+ 板卡生成 200MHz 系统时钟的 XDC 约束，IO 标准为 LVDS
 
 > 用我的 XSA 文件构建 PetaLinux 镜像，需要自定义设备树覆盖
 
-> 将 ZU19EG 上的 JESD204B DAC 接口迁移到 JESD204C
+> 将我的 JESD204B DAC 接口迁移到 JESD204C
 
 > 创建一个矩阵乘法的 Vitis HLS IP，使用 AXI4-Stream 接口
 ```
@@ -155,7 +155,7 @@ Skill 会自动：
 | `vitis_unified_guide.md`     | Vitis 2022.x+ 平台、域、应用创建                  |
 | `petalinux_guide.md`         | BSP 配置、内核、rootfs、启动镜像生成                  |
 | `jesd204b_to_c_migration.md` | JESD204B 到 204C IP 迁移 -- 端口、寄存器、常见陷阱     |
-| `vu9p_guide.md`              | VU9P 器件专用设计指南                            |
+| `vu9p_guide.md`              | 纯 FPGA（无 PS）工程流程 -- UltraScale+/UltraScale/7 系列 |
 | `tcl_commands.md`            | 常用 Vivado Tcl 命令参考                       |
 
 ---

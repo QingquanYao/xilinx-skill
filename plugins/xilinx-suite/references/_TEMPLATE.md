@@ -1,7 +1,7 @@
 # {{主题名称}} 指南
 
 > **适用版本：** Vivado/Vitis {{版本范围，如 2022.x – 2024.x}}
-> **适用器件：** {{器件列表，如 Zynq UltraScale+ (ZU15EG, ZU19EG)、Versal、VU9P 等}}
+> **适用器件：** {{器件列表，如 Zynq UltraScale+ MPSoC、Versal、UltraScale+/UltraScale FPGA、7 系列 等}}
 
 ---
 

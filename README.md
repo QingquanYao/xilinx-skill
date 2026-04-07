@@ -50,7 +50,7 @@ Vitis HLS ──> Vivado ──> Vitis Unified / PetaLinux
 
 **Tools:** Vivado, Vitis HLS, Vitis Unified IDE (2022.x+), PetaLinux
 
-**Devices:** Zynq UltraScale+ MPSoC (ZU15EG, ZU19EG, ZCU104 ...), Virtex UltraScale+ (VU9P), Kintex UltraScale, 7-Series, Versal
+**Devices:** Zynq UltraScale+ MPSoC (CG/EG/EV, ZCU10x eval boards, custom boards), Virtex/Kintex UltraScale+/UltraScale, 7-Series, Versal ACAP
 
 ---
 
@@ -122,13 +122,13 @@ cp -r plugins/xilinx-suite/references ~/.openclaw/skills/xilinx-suite/
 Just describe your task in natural language. Examples:
 
 ```
-> Create a Vivado project for ZCU104 with Zynq PS, 2 AXI GPIO and 1 BRAM controller
+> Create a Vivado project for my ZynqMP board with Zynq PS, 2 AXI GPIO and 1 BRAM controller
 
-> Generate XDC constraints for a 200MHz system clock on VU9P with LVDS IO standard
+> Generate XDC constraints for a 200MHz system clock on my Virtex UltraScale+ board with LVDS IO standard
 
 > Build a PetaLinux image from my XSA with custom device tree overlay
 
-> Migrate my JESD204B DAC interface to JESD204C on ZU19EG
+> Migrate my JESD204B DAC interface to JESD204C
 
 > Create a Vitis HLS IP for matrix multiplication with AXI4-Stream interface
 ```
@@ -155,7 +155,7 @@ The skill will:
 | `vitis_unified_guide.md`     | Vitis 2022.x+ platform, domain, application creation               |
 | `petalinux_guide.md`         | BSP config, kernel, rootfs, boot image generation                  |
 | `jesd204b_to_c_migration.md` | JESD204B to 204C IP migration -- ports, registers, pitfalls        |
-| `vu9p_guide.md`              | VU9P-specific design notes                                         |
+| `vu9p_guide.md`              | Pure-FPGA (no-PS) design flow -- UltraScale+/UltraScale/7-Series   |
 | `tcl_commands.md`            | Common Vivado Tcl command reference                                |
 
 ---

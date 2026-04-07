@@ -6,7 +6,7 @@ description: >
   - Vitis HLS：C/C++ 高层次综合，生成自定义 IP 核
   - Vitis Unified IDE（2022.x+）：嵌入式软件开发，Platform/Domain/Application 创建，XSCT 脚本
   - PetaLinux：嵌入式 Linux 系统构建，BSP 配置，内核/rootfs 定制，启动镜像生成
-  - 器件支持：Zynq UltraScale+ MPSoC（ZU15EG、ZU19EG、ZCU104 等）、Versal、纯 FPGA（VU9P、KU、7系列）
+  - 器件支持：Zynq UltraScale+ MPSoC（EG/EV 全系及 ZCU10x 评估板）、Versal、纯 FPGA（UltraScale+/UltraScale/7 系列）
   只要用户提到以下任何内容，请立即使用本 skill：
   vivado、vitis、hls、高层次综合、vitis_hls、petalinux、zynq、ultrascale、fpga、mpsoc、xsa、比特流、
   block design、综合、实现、xdc、约束、IP核、AXI、嵌入式软件、裸机程序、linux镜像、bsp、设备树、
@@ -55,7 +55,7 @@ C/C++ 算法 → IP 核        硬件平台设计           软件开发 / Linux
 在生成任何脚本之前，确认以下信息（没有明确答案的项主动提问）：
 
 ### 所有工程必须确认
-1. **目标器件/开发板**：完整 part number 或板型（如 `xczu19eg-ffvc1760-2-i`、ZCU104）
+1. **目标器件/开发板**：完整 part number 或板型（由用户提供）
 2. **Vivado/Vitis 版本**（如 2023.2、2024.1）
 3. **设计目标**：这个工程要实现什么功能？
 

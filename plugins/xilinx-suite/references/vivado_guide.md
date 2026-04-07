@@ -4,9 +4,9 @@
 
 | 器件 | 类型 | PS 配置 |
 |------|------|---------|
-| xczu*（ZU15EG、ZU19EG、ZCU104 等）| MPSoC | 需配置 PS，参考 `mpsoc_ps_config.md` |
-| xcvc*（Versal）| Versal | 使用 CIPS IP，参考 Versal 文档 |
-| xcvu*、xcku*、xc7*（VU9P、KU15P、7系列）| 纯 FPGA | 无 PS，纯 PL 设计 |
+| xczu*（Zynq UltraScale+ MPSoC 全系）| MPSoC | 需配置 PS，参考 `mpsoc_ps_config.md` |
+| xcvc*（Versal ACAP）| Versal | 使用 CIPS IP，参考 Versal 文档 |
+| xcvu*、xcku*、xc7*（UltraScale+/UltraScale/7 系列）| 纯 FPGA | 无 PS，纯 PL 设计 |
 
 ---
 
@@ -21,7 +21,7 @@
 # ============================================================
 set project_name  "my_design"
 set project_dir   "./my_design_proj"
-set part_number   "xczu19eg-ffvc1760-2-i"    ;# 替换为实际 part
+set part_number   "<your-part-number>"       ;# 替换为实际 part
 
 # 创建工程
 create_project $project_name $project_dir -part $part_number -force
@@ -367,7 +367,7 @@ read_verilog    [glob ./hdl/*.v]
 read_bd         [glob ./bd/*.bd]
 read_xdc        ./constraints/design.xdc
 
-synth_design    -top design_1_wrapper -part xczu19eg-ffvc1760-2-i
+synth_design    -top design_1_wrapper -part <your-part-number>
 write_checkpoint -force ./checkpoints/post_synth.dcp
 report_timing_summary -file ./reports/post_synth_timing.rpt
 

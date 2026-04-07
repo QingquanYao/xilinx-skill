@@ -5,7 +5,7 @@
 Vivado 2024.1+ removes the old `jesd204` IP (v7.2). All new designs must use `jesd204c` IP (v4.3+).
 JESD204C IP supports **8B10B encoding mode** for full backward compatibility with JESD204B converters (AD9144, AD9250, AD9680, DAC38J84 etc.).
 
-This guide covers the complete migration procedure, based on real-world verified migration on Zynq UltraScale+ (xczu15eg) with AD9144 DAC (8-lane TX) and AD9250 ADC (2-lane RX).
+This guide covers the complete migration procedure for Zynq UltraScale+ / UltraScale+ devices with typical JESD204B converters such as AD9144 DAC and AD9250 ADC.
 
 ---
 

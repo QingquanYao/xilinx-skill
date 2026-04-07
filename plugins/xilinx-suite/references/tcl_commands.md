@@ -4,7 +4,7 @@
 
 | 命令 | 说明 | 示例 |
 |------|------|------|
-| `create_project` | 创建新工程 | `create_project my_proj . -part xczu19eg-ffvc1760-2-i -force` |
+| `create_project` | 创建新工程 | `create_project my_proj . -part <part_number> -force` |
 | `open_project` | 打开工程 | `open_project ./my_proj/my_proj.xpr` |
 | `close_project` | 关闭工程 | `close_project` |
 | `current_project` | 获取当前工程 | `get_property PART [current_project]` |
@@ -70,7 +70,7 @@
 
 | 命令 | 说明 | 示例 |
 |------|------|------|
-| `synth_design` | 综合 | `synth_design -top design_wrapper -part xczu19eg-ffvc1760-2-i` |
+| `synth_design` | 综合 | `synth_design -top design_wrapper -part <part_number>` |
 | `opt_design` | 优化网表 | `opt_design` |
 | `power_opt_design` | 功耗优化 | `power_opt_design` |
 | `place_design` | 布局 | `place_design -directive Explore` |
@@ -177,7 +177,7 @@ foreach hdl_file [glob ./hdl/*.v] {
 }
 
 # 设置变量化的工程配置
-set part    "xczu19eg-ffvc1760-2-i"
+set part    "<part_number>"
 set proj    "my_design"
 set jobs    [expr {min(8, [exec nproc])}]
 ```

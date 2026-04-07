@@ -1,39 +1,38 @@
-# VU9P 纯 FPGA 工程流程指南
+# 纯 FPGA 工程流程指南（无 PS）
 
-## 器件信息
+## 适用范围
 
-| 项目 | 值 |
-|------|-----|
-| 系列 | Virtex UltraScale+ |
-| 典型 Part | xcvu9p-flgb2104-2-i（或 -3-e / -2L-e 等速度档）|
-| 特点 | **纯 PL，无 PS**，无 Zynq 处理器，无 Block Design PS IP |
-| PL 资源 | ~2.6M LUT、6840 DSP、2160 BRAM、120 UltraRAM |
-| 高速接口 | PCIe Gen4 ×16（硬核）、100G 以太网、GTY Transceiver |
+本指南适用于**无 ARM 处理器的纯 FPGA 工程**，包括但不限于：
 
-> ⚠️ VU9P 与 Zynq MPSoC 的根本区别：**没有 ARM 处理器**，没有 `zynq_ultra_ps_e` IP，不需要 Block Design，不导出 XSA。这是一个纯 FPGA 设计流程。
+- Virtex UltraScale+ / Virtex UltraScale
+- Kintex UltraScale+ / Kintex UltraScale
+- Artix UltraScale+ / 7 系列纯 FPGA（xc7a*、xc7k*、xc7v*）
+- Alveo 加速卡（U50/U200/U250/U280 等，底层是 UltraScale+ FPGA）
+
+> ⚠️ 与 Zynq MPSoC 的根本区别：**没有 ARM 处理器**，没有 `zynq_ultra_ps_e` IP，不需要 Block Design，不导出 XSA。这是一个纯 FPGA 设计流程。
 
 ---
 
 ## 工程创建
 
 ```tcl
-# VU9P 工程创建（纯 PL，无 BD）
-set project_name  "my_vu9p_design"
+# 纯 FPGA 工程创建（纯 PL，无 BD）
+set project_name  "my_fpga_design"
 set project_dir   "./$project_name"
-set part_number   "xcvu9p-flgb2104-2-i"
+set part_number   "<your-part-number>"   ;# 如 xcvu9p-flgb2104-2-i、xcku115-flvf1924-2-i 等
 
 create_project $project_name $project_dir -part $part_number -force
 
-# VU9P 通常不需要设置 board_part（除非用 Alveo U250/U280 等官方板）
-# 如果是 Alveo U250：
-# set_property board_part xilinx.com:au250:part0:1.3 [current_project]
+# 纯 FPGA 工程通常不需要设置 board_part（除非用 Alveo 等官方板）
+# 例如 Alveo 卡：
+# set_property board_part <vendor>:<board>:part0:<version> [current_project]
 ```
 
 ---
 
-## 常用 IP 核（VU9P 典型场景）
+## 常用 IP 核（纯 FPGA 典型场景）
 
-### PCIe Gen4 硬核
+### PCIe 硬核 + XDMA
 ```tcl
 # XDMA（PCIe DMA，最常用的 PCIe IP）
 create_ip -name xdma -vendor xilinx.com -library ip -version 4.1 -module_name xdma_0
@@ -51,9 +50,11 @@ set_property -dict [list \
 generate_target all [get_ips xdma_0]
 ```
 
+> PCIe 链路速度/宽度需根据器件支持能力调整（Gen3/Gen4，x1~x16）。
+
 ### 100G 以太网（CMAC）
 ```tcl
-# 100G MAC（CMAC UltraScale+ 硬核）
+# 100G MAC（CMAC UltraScale+ 硬核，部分器件支持）
 create_ip -name cmac_usplus -vendor xilinx.com -library ip -version 3.1 \
   -module_name cmac_usplus_0
 
@@ -102,11 +103,11 @@ set_property -dict [list \
 
 ## 典型工程结构（无 BD）
 
-VU9P 工程完全基于 HDL + IP，不需要 Block Design：
+纯 FPGA 工程完全基于 HDL + IP，不需要 Block Design：
 
 ```tcl
 # ============================================
-# 创建 VU9P 工程并添加文件
+# 创建纯 FPGA 工程并添加文件
 # ============================================
 
 create_project $project_name $project_dir -part $part_number -force
@@ -136,7 +137,7 @@ wait_on_run impl_1
 
 ---
 
-## VU9P XDC 约束要点
+## XDC 约束要点
 
 ### PCIe 时钟（硬核引脚固定，无需手动约束位置）
 ```xdc
@@ -149,29 +150,30 @@ create_clock -period 10.000 -name pcie_refclk \
 
 ### 用户时钟（板卡晶振输入）
 ```xdc
-# 板卡主时钟（300 MHz，差分，以 Alveo U250 为例）
+# 板卡主时钟（示例：300 MHz 差分）
 create_clock -period 3.333 -name clk_300m \
   [get_ports clk_300m_p]
 ```
 
-### GTY Transceiver（高速串口，如 100G 以太网）
+### GT Transceiver（高速串口，如 100G 以太网）
 ```xdc
-# GT 参考时钟（156.25 MHz，用于 100G CMAC）
+# GT 参考时钟（示例：156.25 MHz，用于 100G CMAC）
 create_clock -period 6.400 -name gt_ref_clk \
   [get_ports gt_ref_clk_p]
 
 # GT 引脚不需要 IOSTANDARD 约束（差分高速引脚由工具自动处理）
 ```
 
-### HP Bank IO（VU9P 无 HD Bank，全部是 HP）
+### HP Bank IO 约束
 ```xdc
-set_property PACKAGE_PIN AW27 [get_ports {led[0]}]
+set_property PACKAGE_PIN <pin> [get_ports {led[0]}]
 set_property IOSTANDARD  LVCMOS18 [get_ports {led[*]}]
 ```
 
-### SLR 约束（VU9P 有 3 个 SLR，大型设计需要关注）
+### SLR 约束（多 SLR 大型器件）
+部分高端器件（如 VU9P、VU13P 等）采用多 SLR 堆叠（Super Logic Region）架构，跨 SLR 路径延迟较大，大型设计需要显式指派：
 ```xdc
-# 将关键模块锁定到特定 SLR（可选，用于时序收敛）
+# 将关键模块锁定到特定 SLR（用于时序收敛）
 set_property USER_SLR_ASSIGNMENT SLR0 [get_cells my_pcie_logic]
 set_property USER_SLR_ASSIGNMENT SLR1 [get_cells my_core_logic]
 set_property USER_SLR_ASSIGNMENT SLR2 [get_cells my_hbm_logic]
@@ -179,10 +181,10 @@ set_property USER_SLR_ASSIGNMENT SLR2 [get_cells my_hbm_logic]
 
 ---
 
-## 构建流程（VU9P 特殊注意）
+## 构建流程特殊注意
 
-### SLR 跨越时序（VU9P 的主要时序挑战）
-VU9P 有 3 个 SLR（Super Logic Region），跨 SLR 的路径延迟较大（约 2-3 ns），时序紧张时需要：
+### SLR 跨越时序（多 SLR 器件的主要时序挑战）
+多 SLR 器件跨 SLR 的路径延迟较大（典型 2-3 ns），时序紧张时需要：
 ```tcl
 # 1. 在跨 SLR 路径上加寄存器（推荐在 RTL 层解决）
 # 2. 使用 Pipelining 指令
@@ -208,22 +210,22 @@ phys_opt_design -directive AggressiveExplore
 
 ## 与 MPSoC 流程的关键区别对比
 
-| 项目 | ZU15/19EG（MPSoC）| VU9P（纯 FPGA）|
-|------|-----------------|--------------|
+| 项目 | Zynq UltraScale+ MPSoC | 纯 FPGA（无 PS） |
+|------|-----------------------|------------------|
 | 处理器 | 有（Cortex-A53）| 无 |
 | Block Design | 需要（配置 PS）| 不需要 |
 | 顶层生成方式 | `make_wrapper`（BD wrapper）| 直接写 HDL 顶层 |
 | 主控制器 | PS（ARM）| 无，或用 MicroBlaze 软核 |
 | 导出给软件 | 需要 XSA（Vitis/PetaLinux）| 不需要，直接用 .bit |
 | 编程接口 | JTAG / SD / QSPI 启动 | JTAG / PCIe JTAG |
-| DDR 控制 | PS 内置 DDR 控制器 | 需要 MIG IP 核 |
-| SLR | 1 个 | 3 个（需注意跨 SLR 时序）|
+| DDR 控制 | PS 内置 DDR 控制器 | 需要 MIG / DDR4 IP 核 |
+| SLR | 通常 1 个 | 视器件而定，大器件可能多个 |
 
 ---
 
-## MIG（Memory Interface Generator）——VU9P DDR4
+## MIG / DDR4 IP —— 纯 FPGA DDR 内存控制器
 
-如果 VU9P 设计需要 DDR4 内存（无 PS，需要单独 IP）：
+如果纯 FPGA 设计需要 DDR 内存（无 PS，需要单独 IP）：
 ```tcl
 create_ip -name ddr4 -vendor xilinx.com -library ip -version 2.2 \
   -module_name ddr4_0

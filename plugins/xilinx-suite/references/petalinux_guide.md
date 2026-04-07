@@ -127,7 +127,7 @@ nano ./project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
 /include/ "system-conf.dtsi"
 / {
     /* 自定义根节点属性 */
-    model = "My Custom ZU19EG Board";
+    model = "My Custom ZynqMP Board";
     compatible = "my-company,my-board", "xlnx,zynqmp";
 
     /* 自定义 GPIO */
