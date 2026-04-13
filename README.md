@@ -157,6 +157,7 @@ The skill will:
 | `jesd204b_to_c_migration.md` | JESD204B to 204C IP migration -- ports, registers, pitfalls        |
 | `vu9p_guide.md`              | Pure-FPGA (no-PS) design flow -- UltraScale+/UltraScale/7-Series   |
 | `tcl_commands.md`            | Common Vivado Tcl command reference                                |
+| `official-docs/index.md`     | Xilinx/AMD official document index -- UG/PG/DS/XAPP numbers, titles, and cross-references to this repo's guides |
 
 ---
 

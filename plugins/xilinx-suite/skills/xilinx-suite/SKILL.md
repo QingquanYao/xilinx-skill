@@ -47,6 +47,7 @@ C/C++ 算法 → IP 核        硬件平台设计           软件开发 / Linux
 | 嵌入式软件、裸机程序、RTOS、platform/domain | Vitis Unified | `../../references/vitis_unified_guide.md` |
 | 嵌入式 Linux、kernel 配置、rootfs、启动镜像 | PetaLinux | `../../references/petalinux_guide.md` |
 | PetaLinux 上跑 gRPC C++ 服务端 / Python 客户端、ZMQ→gRPC 迁移、udmabuf+AXI DMA 暴露 RPC | PetaLinux | `../../references/grpc_on_petalinux.md` |
+| 查找官方文档编号、UG/PG/DS 编号查询、文档用途说明 | 通用 | `../../references/official-docs/index.md` |
 
 ---
 
@@ -177,3 +178,4 @@ hls_ip/                  →   IP Catalog
 - `../../references/petalinux_guide.md`：PetaLinux 系统构建流程
 - `../../references/jesd204b_to_c_migration.md`：JESD204B→C IP 迁移指南（端口映射、数据位宽、AXI 寄存器、常见陷阱）
 - `../../references/grpc_on_petalinux.md`：PetaLinux + gRPC 端到端部署指南（rootfs 配置、libutf8_range 软链、VM 预生成 .pb.cc + 板上 g++、udmabuf/AXI DMA RPC 暴露、ZMQ→gRPC 迁移、常见 RCU stall 等陷阱）
+- `../../references/official-docs/index.md`：Xilinx/AMD 官方文档索引（UG/PG/DS/XAPP 编号、标题、用途、与本仓库参考指南的对应关系）

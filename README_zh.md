@@ -157,6 +157,7 @@ Skill 会自动：
 | `jesd204b_to_c_migration.md` | JESD204B 到 204C IP 迁移 -- 端口、寄存器、常见陷阱     |
 | `vu9p_guide.md`              | 纯 FPGA（无 PS）工程流程 -- UltraScale+/UltraScale/7 系列 |
 | `tcl_commands.md`            | 常用 Vivado Tcl 命令参考                       |
+| `official-docs/index.md`     | Xilinx/AMD 官方文档索引 -- UG/PG/DS/XAPP 编号、标题、用途，以及与本仓库参考指南的对应关系 |
 
 ---
 
