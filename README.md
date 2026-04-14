@@ -206,9 +206,9 @@ project_root/
 
 <a href="https://star-history.com/#QingquanYao/xilinx-skill&Date">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=QingquanYao/xilinx-skill&type=Date&theme=dark&cache_bust=20260414" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=QingquanYao/xilinx-skill&type=Date&cache_bust=20260414" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=QingquanYao/xilinx-skill&type=Date&cache_bust=20260414" />
+    <source media="(prefers-color-scheme: dark)" srcset="docs/star-history-dark.svg" />
+    <source media="(prefers-color-scheme: light)" srcset="docs/star-history.svg" />
+    <img alt="Star History Chart" src="docs/star-history.svg" />
   </picture>
 </a>
 
