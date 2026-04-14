@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License"/>
 </p>
 
-#让AI全流程自己调试FPGA真的爽翻了
+# 让AI全流程自己调试FPGA真的爽翻了
 
 # Xilinx 全工具链 Skill -- AI 编程助手插件
 
