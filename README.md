@@ -7,7 +7,7 @@
   <img src="https://img.shields.io/badge/Powered%20by-Claude%20Code-7C3AED?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code"/>
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License"/>
 </p>
-
+#让AI全流程自己调试FPGA真的爽翻了
 # Xilinx 全工具链 Skill -- AI 编程助手插件
 
 > **让 AI 处理繁琐的 Tcl 脚本，你只需专注架构设计。**
