@@ -204,11 +204,11 @@ project_root/
 
 ## Star 趋势
 
-<a href="https://star-history.com/#QingquanYao/xilinx-skill&Date">
+<a href="https://www.star-history.com/?type=date&repos=QingquanYao%2Fxilinx-skill">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/star-history-dark.svg" />
-    <source media="(prefers-color-scheme: light)" srcset="docs/star-history.svg" />
-    <img alt="Star History Chart" src="docs/star-history.svg" />
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=QingquanYao/xilinx-skill&type=date&theme=dark&legend=top-left" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=QingquanYao/xilinx-skill&type=date&legend=top-left" />
+    <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=QingquanYao/xilinx-skill&type=date&legend=top-left" />
   </picture>
 </a>
 
