@@ -18,9 +18,9 @@
 
 ---
 
-## 推荐搭配的 MCP Server
+## 强烈推荐安装的 MCP Server
 
-本 Skill 搭配以下 MCP Server 使用效果最佳，可让 AI 直接控制 Xilinx 工具链和基础设施：
+**只有安装下列 MCP Server，才能实现全自动调试与开发**——AI 直接控制 Xilinx 工具链和基础设施，无需人工干预：
 
 | MCP Server | 说明 |
 |-----------|------|

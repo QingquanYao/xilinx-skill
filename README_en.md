@@ -16,9 +16,9 @@ An AI coding skill (Claude Code / Codex / OpenClaw) that turns natural language 
 
 ---
 
-## Recommended MCP Servers
+## Strongly Recommended MCP Servers
 
-This skill works best when paired with the following MCP servers, which give AI direct control over Xilinx tools and infrastructure:
+**Installing the MCP servers below is required for fully autonomous debugging and development** — they give AI direct control over Xilinx tools and infrastructure, with no human in the loop:
 
 | MCP Server | Description |
 |-----------|-------------|
