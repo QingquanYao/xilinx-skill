@@ -3,6 +3,10 @@
 </p>
 
 <p align="center">
+  <img src="assets/xilinx-skill-banner.png" alt="xilinx-skill -- AI-Powered Vivado Design Automation" width="800"/>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/Platform-Xilinx%20%7C%20AMD-E4002B?style=for-the-badge&logo=xilinx&logoColor=white" alt="Xilinx"/>
   <img src="https://img.shields.io/badge/Powered%20by-Claude%20Code-7C3AED?style=for-the-badge&logo=anthropic&logoColor=white" alt="Claude Code"/>
   <img src="https://img.shields.io/badge/License-MIT-blue?style=for-the-badge" alt="License"/>
